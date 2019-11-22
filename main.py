@@ -3,18 +3,18 @@ from données import *
 
 user = user_name()
 scores = score_file()
-continuer = True
+continuer = True #booléan
 
-# Si l'utilisateur n'a pas encore de score, on l'ajoute
+# adding score in pickle file
 if user not in scores.keys():
-    scores[user] = 0 # 0 point pour commencer
+    scores[user] = 0 #data in pickle's file (0 for starting)
 
 
 while continuer:
     full_word = computer_word_choice()
     finded_letter = []
-    finded_word = recup_secret_word(full_word, finded_letter)
-    chances = nb_coups
+    finded_word = recup_secret_word(full_word, finded_letter) #compare the word and the letter and give a result
+    chances = nb_coups #for score
 
     while finded_word != full_word and chances>0:
         print("The secret word is {0} (still {1} chances)".format(finded_word, chances))
@@ -26,7 +26,7 @@ while continuer:
             print("Well done.")
         else:
             chances -= 1
-            print("nothing insiiiiiiide !")
+            print("nothing insiiiiiiide !")#depeche mode
         finded_word = recup_secret_word(full_word, finded_letter)
 
     # when the word is finded or chances = 0
@@ -35,7 +35,7 @@ while continuer:
     else:
         print("Wouarghhhhh! Bleuaaaaaarrrrd! HANGED!")
 
-    scores[user] += chances
+    scores[user] += chances #counting score and add it
     save_score(scores)
     show_score()
         
@@ -43,5 +43,5 @@ while continuer:
 
     continue_game = input("Do you want to know more ? (N) ?").lower()
     if continue_game == "n":
-        continuer = False
+        continuer = False #boolean
 

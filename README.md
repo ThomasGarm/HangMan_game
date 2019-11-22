@@ -5,4 +5,5 @@ This is a game where i'll try to make functions for every aspect of the game:
 -game function
 -user function
 -boolean loop
+-pickle
 

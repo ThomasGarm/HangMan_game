@@ -3,6 +3,7 @@ import pickle
 from random import choice
 from données import *
 
+#using pickle for create, save and display player's score
 def score_file():
     score = {}
     save= open("PenduGame/score_file", "wb")
@@ -21,10 +22,7 @@ def show_score():
     print(result)
 
 
-
-
-
-def user_name():#call for game  user
+def user_name():
     user=input("choose your name")
     while control_user_name(user) is False:
         print("minimum 2 caractères et maxi 4")
@@ -39,10 +37,10 @@ def control_user_name(user):#conditions for the name
         return False
 
 
-def computer_word_choice():
+def computer_word_choice(): #from file données.py
     return choice(word_list)
 
-def recup_letter():
+def recup_letter():# input from player
     letter = input("Tap a letter: ").lower()
     if len(letter)>1 or not letter.isalpha():
         print("wrong entry, choose one letter")
@@ -50,7 +48,7 @@ def recup_letter():
     else:
         return letter
 
-def recup_secret_word(full_word, finded_letter):
+def recup_secret_word(full_word, finded_letter): #function for adding letter
     secret_word = ""
     for letter in full_word:
         if letter in finded_letter:
