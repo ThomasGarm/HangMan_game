@@ -3,6 +3,27 @@ import pickle
 from random import choice
 from données import *
 
+def score_file():
+    score = {}
+    save= open("PenduGame/score_file", "wb")
+    pickle.dump(score, save)
+    save.close()
+    return score
+
+def save_score(scores):
+    save = open("PenduGame/score_file", "wb")
+    pickle.dump(scores, save)
+    save.close()
+
+def show_score():
+    load = open("PenduGame/score_file", "rb")
+    result = pickle.load(load)
+    print(result)
+
+
+
+
+
 def user_name():#call for game  user
     user=input("choose your name")
     while control_user_name(user) is False:
@@ -17,22 +38,6 @@ def control_user_name(user):#conditions for the name
     except AssertionError as a:
         return False
 
-
-def recup_scores():
-    if os.path.exists(my_score_file): 
-        fichier_scores = open(my_score_file, "rb")
-        mon_depickler = pickle.Unpickler(fichier_scores)
-        scores = mon_depickler.load()
-        fichier_scores.close()
-    else:
-        scores = {}
-    return scores
-
-def enregistrer_scores(scores):
-    fichier_scores = open(my_score_file, "wb") # crush old score
-    mon_pickler = pickle.Pickler(fichier_scores)
-    mon_pickler.dump(scores)
-    fichier_scores.close()
 
 def computer_word_choice():
     return choice(word_list)

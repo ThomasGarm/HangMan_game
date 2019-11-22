@@ -2,8 +2,13 @@ from function import *
 from données import *
 
 user = user_name()
-
+scores = score_file()
 continuer = True
+
+# Si l'utilisateur n'a pas encore de score, on l'ajoute
+if user not in scores.keys():
+    scores[user] = 0 # 0 point pour commencer
+
 
 while continuer:
     full_word = computer_word_choice()
@@ -26,20 +31,17 @@ while continuer:
 
     # when the word is finded or chances = 0
     if finded_word == full_word:
-    print("Congratulations ! You have find the word {0}.".format(full_word))
+        print("Congratulations ! You have find the word: {0}.".format(full_word))
     else:
         print("Wouarghhhhh! Bleuaaaaaarrrrd! HANGED!")
 
-    
-    scores[user] += chances #reboot chances
+    scores[user] += chances
+    save_score(scores)
+    show_score()
+        
+        
 
-    continue_game = input("Do you want to know more ? (O/N) ?").lower()
-    if continue_game == "N"
+    continue_game = input("Do you want to know more ? (N) ?").lower()
+    if continue_game == "n":
         continuer = False
-    
 
-# La partie est finie, on enregistre les scores
-enregistrer_scores(scores)
-
-# On affiche les scores de l'utilisateur
-print("Vous finissez la partie avec {0} points.".format(scores[utilisateur]))
