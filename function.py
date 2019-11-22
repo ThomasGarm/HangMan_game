@@ -4,6 +4,7 @@ from random import choice
 from données import *
 
 def user_name():#call for game  user
+    user=input("choose your name")
     while control_user_name(user) is False:
         print("minimum 2 caractères et maxi 4")
         user=input("choose your name")
@@ -28,7 +29,7 @@ def recup_scores():
     return scores
 
 def enregistrer_scores(scores):
-    fichier_scores = open(my_score_file, "wb") # On écrase les anciens scores
+    fichier_scores = open(my_score_file, "wb") # crush old score
     mon_pickler = pickle.Pickler(fichier_scores)
     mon_pickler.dump(scores)
     fichier_scores.close()
@@ -37,7 +38,7 @@ def computer_word_choice():
     return choice(word_list)
 
 def recup_letter():
-    letter = input("Tap a letter: ").lower
+    letter = input("Tap a letter: ").lower()
     if len(letter)>1 or not letter.isalpha():
         print("wrong entry, choose one letter")
         return recup_letter()
