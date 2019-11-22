@@ -18,13 +18,12 @@ def control_user_name(user):#conditions for the name
 
 
 def recup_scores():
-    if os.path.exists(my_score_file): # Le fichier existe
-        # On le récupère
+    if os.path.exists(my_score_file): 
         fichier_scores = open(my_score_file, "rb")
         mon_depickler = pickle.Unpickler(fichier_scores)
         scores = mon_depickler.load()
         fichier_scores.close()
-    else: # Le fichier n'existe pas
+    else:
         scores = {}
     return scores
 
